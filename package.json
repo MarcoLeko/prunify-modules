@@ -1,0 +1,28 @@
+{
+  "name": "@lekoma/prunify-modules",
+  "version": "1.0.0",
+  "description": "like npm prune --production just better",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcoLeko/prunify-modules.git"
+  },
+  "author": "Marco Leko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcoLeko/prunify-modules/issues"
+  },
+  "homepage": "https://github.com/MarcoLeko/prunify-modules#readme",
+  "devDependencies": {
+    "@types/node": "^22.10.7"
+  },
+  "dependencies": {
+    "@lekoma/promise-as-u-go": "^1.0.2",
+    "chalk": "^5.4.1",
+    "filesize": "^10.1.6",
+    "rimraf": "^5.0.10"
+  }
+}
