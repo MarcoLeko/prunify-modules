@@ -1,10 +1,10 @@
 {
   "name": "@lekoma/prunify-modules",
   "version": "1.0.0",
-  "description": "like npm prune --production just better",
+  "description": "Like npm \"prune --production\" just better. Command that is meant to be used for production optimized applications",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsx ./src/main.ts"
   },
   "repository": {
     "type": "git",
@@ -17,11 +17,14 @@
   },
   "homepage": "https://github.com/MarcoLeko/prunify-modules#readme",
   "devDependencies": {
-    "@types/node": "^22.10.7"
+    "@types/node": "^22.10.7",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2"
   },
   "dependencies": {
     "@lekoma/promise-as-u-go": "^1.0.2",
     "chalk": "^5.4.1",
+    "commander": "^13.1.0",
     "filesize": "^10.1.6",
     "rimraf": "^5.0.10"
   }
