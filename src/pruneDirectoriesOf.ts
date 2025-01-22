@@ -1,4 +1,3 @@
-import filesize from "filesize";
 import * as fs from "fs";
 import * as path from "path";
 import chalk from "chalk";
@@ -6,7 +5,6 @@ import { rimraf } from "rimraf";
 import { tryCatch } from "@lekoma/promise-as-u-go/dist";
 
 import { requireDynamically } from "./config/requireDynamically";
-import { type Dirent } from "node:fs";
 
 const BINARIES_FOLDER = ".bin";
 
@@ -17,9 +15,7 @@ async function retrievePackageJson(
   return requireDynamically(packageJsonPath);
 }
 
-async function prunePackage(entry: Dirent, packageName: string) {
-  const packagePath = path.resolve(entry.path, entry.name);
-
+async function prunePackage(packagePath: string, packageName: string) {
   const [error] = await tryCatch(rimraf(packagePath));
 
   if (error) {
@@ -73,14 +69,22 @@ export async function pruneDirectoriesOf(
     const isDirectoryEmpty =
       fs.readdirSync(currentDirectory, { withFileTypes: true }).length === 0;
 
+    const packagePath = path.resolve(entry.path, entry.name);
+
+    if (dryRun) {
+      console.log(
+        `${chalk.bold.gray("[Dry-run]")} Package that would be pruned: ${packagePath}`,
+      );
+      continue;
+    }
+
     if (
-      (!isMonoRepoDirectory ||
-        isDirectoryEmpty ||
-        directory === BINARIES_FOLDER ||
-        canDirectoryBeForcePruned) &&
-      !dryRun
+      !isMonoRepoDirectory ||
+      isDirectoryEmpty ||
+      canDirectoryBeForcePruned ||
+      directory === BINARIES_FOLDER
     ) {
-      await prunePackage(entry, directory);
+      await prunePackage(packagePath, directory);
     }
   }
 }

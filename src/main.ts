@@ -14,7 +14,10 @@ program
   .name(packageJson.name)
   .description(packageJson.description)
   .version(packageJson.version)
-  .option("-d, --dry-run", "list of packages that would be pruned", false)
+  .option(
+    "-d, --dry-run",
+    "condition to avoid pruning - if enabled - dependencies that would be pruned are listed", false
+  )
   .option(
     "-e, --externals <list>",
     "comma-seperated list of dependencies that should be ignored from pruning (also works with mono-repo dependencies)",
@@ -55,7 +58,7 @@ const options = program.opts<{
     appNodeModules,
     dependenciesToKeep,
     dependenciesToForcePrune,
-    options.dryRun,
+    options.dryRun
   );
 
   const formattedSizeAfter = filesize(await getDirectorySize(appNodeModules));
