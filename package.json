@@ -4,7 +4,7 @@
   "description": "Like npm \"prune --production\" just better. Command that is meant to be used for production optimized applications before their respective deployments",
   "main": "dist/src/main.js",
   "bin": {
-    "prunify": "dist/bin/prunify.js"
+    "prunify-modules": "dist/bin/prunify-modules.js"
   },
   "files": [
     "./dist"
