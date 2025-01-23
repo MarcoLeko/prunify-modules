@@ -46,7 +46,7 @@ Because of the node_modules folder that gets copied to the last stage the docker
 |---------------------|--------|----------|----------------|--------|
 | app-unoptimized     | latest | xxx      | xx seconds ago | 1.25GB |
 
-Doing a deeper analysis with dive - a Docker image analysis tool it is visible which part of the app is responsible for its size:
+Doing a deeper analysis with dive - a Docker image analysis tool - it is visible which part of the app is responsible for its size:
 
 <img alt="dive-into-unoptimized-app" height="50" src="./doc/dive-into-unoptimized-app.png" width="550"/>
 
