@@ -51,10 +51,6 @@ const options = program.opts<{
   const [dependenciesToKeep, dependenciesToForcePrune] =
     await getDependenciesLists(options);
 
-  console.log(options);
-  console.log(dependenciesToKeep);
-  console.log(dependenciesToForcePrune);
-
   await pruneDirectoriesOf(
     appNodeModules,
     dependenciesToKeep,
