@@ -4,8 +4,11 @@
   "description": "Like npm \"prune --production\" just better. Command that is meant to be used for production optimized applications",
   "main": "index.js",
   "bin": {
-    "prunify": "./bin/index.ts"
+    "prunify": ".dist/bin/index.js"
   },
+  "files": [
+    "./dist"
+  ],
   "scripts": {
     "start": "tsx ./src/main.ts",
     "build": "tsc -p tsconfig.build.json"
@@ -27,7 +30,7 @@
   },
   "dependencies": {
     "@lekoma/promise-as-u-go": "^1.0.2",
-    "chalk": "^5.4.1",
+    "chalk": "^4.1.2",
     "commander": "^13.1.0",
     "filesize": "^10.1.6",
     "rimraf": "^5.0.10"
