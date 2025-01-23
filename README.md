@@ -118,7 +118,7 @@ prunify-modules --prune typescript,@types,babel
 ```
 
 Explanation:
--	Dependencies typescript, @types, and babel will be forcibly removed, even if they are present as production dependencies.
+-	Dependencies like: typescript, @types, and babel will be forcibly removed, even if they are present as production dependencies.
 
 ### Full Combined Example
 
