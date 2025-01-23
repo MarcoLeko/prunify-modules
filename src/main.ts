@@ -1,6 +1,6 @@
 import { program } from "commander";
 import { requireDynamically } from "./config/requireDynamically";
-import { appNodeModules, appPackageJson } from "./config/paths";
+import { appNodeModules, libPackageJson } from "./config/paths";
 import { PackageJSON } from "./types/packageJSON";
 import { getDirectorySize } from "./getDirectorySize";
 import { filesize } from "filesize";
@@ -8,7 +8,7 @@ import chalk from "chalk";
 import { getDependenciesLists } from "./getDependenciesLists";
 import { pruneDirectoriesOf } from "./pruneDirectoriesOf";
 
-const packageJson: PackageJSON = requireDynamically(appPackageJson);
+const packageJson: PackageJSON = requireDynamically(libPackageJson);
 
 program
   .name(packageJson.name)
@@ -16,7 +16,8 @@ program
   .version(packageJson.version)
   .option(
     "-d, --dry-run",
-    "condition to avoid pruning - if enabled - dependencies that would be pruned are listed", false
+    "condition to avoid pruning - if enabled - dependencies that would be pruned are listed",
+    false,
   )
   .option(
     "-e, --externals <list>",
@@ -58,7 +59,7 @@ const options = program.opts<{
     appNodeModules,
     dependenciesToKeep,
     dependenciesToForcePrune,
-    options.dryRun
+    options.dryRun,
   );
 
   const formattedSizeAfter = filesize(await getDirectorySize(appNodeModules));

@@ -1,10 +1,10 @@
 {
   "name": "@lekoma/prunify-modules",
   "version": "1.0.0",
-  "description": "Like npm \"prune --production\" just better. Command that is meant to be used for production optimized applications",
-  "main": "index.js",
+  "description": "Like npm \"prune --production\" just better. Command that is meant to be used for production optimized applications before their respective deployments",
+  "main": "dist/src/main.js",
   "bin": {
-    "prunify": ".dist/bin/index.js"
+    "prunify": "dist/bin/prunify.js"
   },
   "files": [
     "./dist"
