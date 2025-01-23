@@ -4,7 +4,7 @@
   "description": "Like npm \"prune --production\" just better. Command that is meant to be used for production optimized applications",
   "main": "index.js",
   "bin": {
-    "prune": "./bin/index.ts"
+    "prunify": "./bin/index.ts"
   },
   "scripts": {
     "start": "tsx ./src/main.ts",
