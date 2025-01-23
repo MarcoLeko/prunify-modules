@@ -21,7 +21,7 @@ program
   )
   .option(
     "-e, --externals <list>",
-    "comma-seperated list of dependencies that should be ignored from pruning (also works with mono-repo dependencies)",
+    "comma-seperated list of dependencies that should be ignored from pruning (also works with mono-repo dependencies) - disclaimer: transitive dependencies of externals are being kept as well",
     (val: string) => val.split(","),
     [],
   )
