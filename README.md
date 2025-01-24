@@ -132,5 +132,29 @@ Explanation:
 -	The external dependencies react and react-dom (and their transitive dependencies) will not be pruned.
 -	The dependencies typescript and eslint will be explicitly removed.
 
+### Programmatic Usage
 
+prunify-modules also provides programmatic access via its CLI class. This is useful when integrating the pruning functionality into custom scripts or automation workflows.
 
+```ts
+import { PrunifyCli } from "prunify-modules";
+
+// Configuration options for pruning
+const options = {
+  externals: ["@datadog", "react", "react-dom"], // Dependencies to keep
+  prune: ["typescript", "eslint"],              // Dependencies to explicitly prune
+  dryRun: false,                                // Preview the pruning process without deleting files
+};
+
+// Initialize the Prunify CLI with the options
+const prunify = new PrunifyCli(options);
+
+// Run the pruning process
+(async () => {
+  try {
+    await prunify.run();
+  } catch (error) {
+    console.error("Pruning failed:", error);
+  }
+})();
+```

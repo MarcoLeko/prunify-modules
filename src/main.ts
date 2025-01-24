@@ -1,12 +1,9 @@
 import { program } from "commander";
 import { requireDynamically } from "./config/requireDynamically";
-import { appNodeModules, libPackageJson } from "./config/paths";
+import { libPackageJson } from "./config/paths";
 import { PackageJSON } from "./types/packageJSON";
-import { getDirectorySize } from "./getDirectorySize";
-import { filesize } from "filesize";
-import chalk from "chalk";
-import { getDependenciesLists } from "./getDependenciesLists";
-import { pruneDirectoriesOf } from "./pruneDirectoriesOf";
+import { PrunifyOptions } from "./types/prunifyOptions";
+import { PrunifyCli } from "./prunifyCli";
 
 const packageJson: PackageJSON = requireDynamically(libPackageJson);
 
@@ -34,35 +31,10 @@ program
 
 program.parse();
 
-const options = program.opts<{
-  externals: string[];
-  prune: string[];
-  dryRun: boolean;
-}>();
+const options = program.opts<PrunifyOptions>();
 
 (async function main() {
-  const formattedSizeBefore = filesize(await getDirectorySize(appNodeModules));
-  console.log(
-    "node_modules size un-optimized being: ",
-    chalk.bold.red(formattedSizeBefore),
-  );
-  console.log(chalk.bold("Pruning node_modules"));
-
-  const [dependenciesToKeep, dependenciesToForcePrune] =
-    await getDependenciesLists(options);
-
-  await pruneDirectoriesOf(
-    appNodeModules,
-    dependenciesToKeep,
-    dependenciesToForcePrune,
-    options.dryRun,
-  );
-
-  const formattedSizeAfter = filesize(await getDirectorySize(appNodeModules));
-  console.log(chalk.bold("Pruning complete"));
-  console.log(
-    `node_modules size optimized being: ${chalk.bold.blue(formattedSizeAfter)} 🚀`,
-  );
+  await new PrunifyCli(options).run();
 })().catch((error) => {
   console.error(error);
   process.exitCode = 1;
