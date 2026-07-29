@@ -12,7 +12,7 @@ const resolveLib = (relativePath: string) =>
   path.resolve(libDirectory, relativePath);
 
 const { appPackageJson, appNodeModules, libPackageJson } = {
-  libPackageJson: resolveLib("../../../package.json"),
+  libPackageJson: resolveLib("../../package.json"),
   appPackageJson: resolveApp("package.json"),
   appNodeModules: resolveApp("node_modules"),
 };
