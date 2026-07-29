@@ -1,8 +1,8 @@
-import { tryCatch } from "@lekoma/promise-as-u-go/dist";
+import { tryCatch } from "@lekoma/promise-as-u-go/dist/try-catch.js";
 import path from "path";
-import { appNodeModules } from "./config/paths";
-import { requireDynamically } from "./config/requireDynamically";
-import { PackageJSON } from "./types/packageJSON";
+import { appNodeModules } from "./config/paths.js";
+import { requireDynamically } from "./config/requireDynamically.js";
+import { PackageJSON } from "./types/packageJSON.js";
 
 export class DependencyResolver {
   public async retrievePackageJson(

@@ -10,8 +10,8 @@
     "isolatedModules": true,
     "strict": true,
     "noUncheckedIndexedAccess": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
     "outDir": "dist",
     "noEmit": true,
     "lib": ["ES2022", "dom"]

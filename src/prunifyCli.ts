@@ -1,13 +1,13 @@
 import { filesize } from "filesize";
-import { getDirectorySize } from "./config/getDirectorySize";
-import { appNodeModules } from "./config/paths";
-import chalk from "chalk";
-import { PrunifyOptions } from "./types/prunifyOptions";
-import { DependencyResolver } from "./dependencyResolver";
-import { tryCatch } from "@lekoma/promise-as-u-go/dist";
+import { getDirectorySize } from "./config/getDirectorySize.js";
+import { appNodeModules } from "./config/paths.js";
+import { PrunifyOptions } from "./types/prunifyOptions.js";
+import { DependencyResolver } from "./dependencyResolver.js";
+import { tryCatch } from "@lekoma/promise-as-u-go/dist/try-catch.js";
 import { rimraf } from "rimraf";
 import fs from "fs";
 import path from "path";
+import chalk from "chalk";
 
 export class PrunifyCli {
   readonly #options: PrunifyOptions;
@@ -115,7 +115,7 @@ export class PrunifyCli {
       const isDirectoryEmpty =
         fs.readdirSync(currentDirectory, { withFileTypes: true }).length === 0;
 
-      const packagePath = path.resolve(entry.path, entry.name);
+      const packagePath = path.resolve(entry.parentPath, entry.name);
 
       if (dryRun) {
         this.logPretendedPackagePrune(packagePath);

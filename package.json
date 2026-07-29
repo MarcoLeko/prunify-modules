@@ -3,6 +3,7 @@
   "version": "1.1.0",
   "description": "Like npm \"prune --production\" just better. Command that is meant to be used for production optimized applications before their respective deployments",
   "main": "dist/src/main.js",
+  "type": "module",
   "bin": {
     "prunify-modules": "dist/bin/prunify-modules.js"
   },
@@ -10,7 +11,7 @@
     "./dist"
   ],
   "scripts": {
-    "start": "tsx ./src/main.ts",
+    "start": "tsx ./src/main.js",
     "build": "rm -rf dist && tsc -p tsconfig.build.json"
   },
   "repository": {
@@ -24,15 +25,19 @@
   },
   "homepage": "https://github.com/MarcoLeko/prunify-modules#readme",
   "devDependencies": {
-    "@types/node": "^22.10.7",
-    "prettier": "^3.4.2",
-    "tsx": "^4.19.2"
+    "@types/node": "^24.13.3",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.1",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": "~24"
   },
   "dependencies": {
     "@lekoma/promise-as-u-go": "^1.0.2",
-    "chalk": "^4.1.2",
-    "commander": "^13.1.0",
-    "filesize": "^10.1.6",
-    "rimraf": "^5.0.10"
+    "chalk": "^6.0.0",
+    "commander": "^15.0.0",
+    "filesize": "^11.0.22",
+    "rimraf": "^6.1.3"
   }
 }

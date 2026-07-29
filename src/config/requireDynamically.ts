@@ -1,5 +1,5 @@
-function requireDynamically(path: string) {
-    return eval(`require('${path.split('\\').join('/')}');`);
+async function requireDynamically(path: string) {
+    return import(path);
 }
 
 export { requireDynamically };
