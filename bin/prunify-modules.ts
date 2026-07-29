@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-import "../src/main";
+import "../src/main.js";
